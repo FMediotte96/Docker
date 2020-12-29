@@ -1,0 +1,9 @@
+version: '3'
+services:
+  web:
+    container_name: nginx2
+    ports:
+      - "8081:80"
+    volumes:
+      - "/c/Users/fmediotte/Desktop/Facu/Udemy/Docker/DockerRepo/docker-compose/Volumes/host volume/html:/usr/share/nginx/html"
+    image: nginx
