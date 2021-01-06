@@ -1,0 +1,23 @@
+version: '2'
+services:
+  web:
+    container_name: apache
+    ports:
+      - "8080:80"
+    image: exercise
+    build: .
+    networks:
+      - net
+    volumes:
+      - exercise:/var/www/html
+    cpuset: "0"
+    mem_limit: 50m
+    environment:
+      ENV: dev
+      VIRTUALIZATION: docker
+networks:
+  net:
+volumes:
+  exercise:
+
+

@@ -1,0 +1,33 @@
+version: '3'
+services: 
+  db:
+    container_name: mysql
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_DATABASE: prueba
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin
+    ports:
+      - "3306:3306"
+    networks:
+      - my_net
+    volumes: 
+      - "dataDB:/var/lib/mysql"
+  
+  admin:
+    container_name: php
+    image: phpmyadmin/phpmyadmin
+    ports: 
+      - "8080:80"
+    environment: 
+      PMA_HOST: db:3306
+    depends_on: 
+      - db
+    networks: 
+      - my_net      
+
+networks: 
+  my_net:
+volumes: 
+  dataDB:
